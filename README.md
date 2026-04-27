@@ -38,13 +38,21 @@ The only supported target is:
 
 ### Step 1: Compile the backend
 ```bash
-# Clone or copy this repo into your development environment
-cd /path/to/your/local-repo/ik_llama-cpp
+# 1. Clone LocalAI first (if not already done)
+git clone https://github.com/mudler/LocalAI.git
+cd LocalAI
 
-# Compile using the only supported target
+# 2. Clone ik_llama.cpp directly into the expected backend folder
+git clone https://github.com/ruribe17/localai-backend-ikllama.cpp.git backend/cpp/ik_llama-cpp
+
+# 3. Build the backend
+cd backend/cpp/ik_llama-cpp
 make llama-cpp-grpc
 
-# Verify the static binary was generated
+# 4. Compile using the only supported target
+make llama-cpp-grpc
+
+# 5. Verify the static binary was generated
 ls -lh grpc-server
 # → Should show something like: -rwxr-xr-x 1 root root 180M ...
 ```
