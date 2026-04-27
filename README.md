@@ -135,7 +135,8 @@ cache_type_v: q8_0
 template:
     use_tokenizer_template: true
 ```
-<img width="1382" height="696" alt="image" src="https://github.com/user-attachments/assets/7d21a312-6be9-45f1-b1df-973bdbb62f02" />
+<img width="1382" height="696" alt="image" src="https://github.com/user-attachments/assets/7d21a312-6be9-45f1-b1df-973bdbb62f02" /> <img width="1774" height="802" alt="image" src="https://github.com/user-attachments/assets/3002383e-eaf0-4632-bcb6-24edbcff46d2" />
+
 
 ---
 
