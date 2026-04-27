@@ -1,0 +1,17 @@
+--- a/ggml/src/iqk/fa/iqk_fa_templates.h	2026-03-09 14:16:19.908701464 -0500
++++ b/ggml/src/iqk/fa/iqk_fa_templates.h	2026-03-09 14:16:19.916701564 -0500
+@@ -1154,8 +1154,12 @@
+                 S += expf(s - fms.M[j]);
+             }
+         }
+-        GGML_ASSERT(S > 0);
+-        auto norm = F16::set1(1/S);
++        // Slot vacío (parallel>1 CPU F16/Q8_0): escribir ceros en lugar de crashear
++        if (S <= 0) {
++            std::memset(qkv, 0, D * sizeof(float));
++            return;
++        }
++        auto norm = F16::set1(1.0f / S);
+         //auto norm = F16::set1(fms.S[j] > 0 ? 1/fms.S[j] : 0.f);
+         for (int i = 0; i < D/F16::block_size; ++i) {
+             auto r = F16::load(R + F16::block_size*i);
