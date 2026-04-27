@@ -47,10 +47,9 @@ git clone https://github.com/ruribe17/localai-backend-ikllama.cpp.git backend/cp
 
 # 3. Build the backend
 cd backend/cpp/ik_llama-cpp
-make llama-cpp-grpc
 
 # 4. Compile using the only supported target
-make llama-cpp-grpc
+make purge && CMAKE_ARGS="-DGGML_LTO=ON -DGGML_OPENMP=ON -DGGML_BMI2=ON -DGGML_FMA=ON -DGGML_F16C=ON -DGGML_NUMA=ON -DGGML_BLAS=ON -DGGML_IQK_FA_ALL_QUANTS=ON -DGGML_BLAS_VENDOR=OpenBLAS -DCMAKE_PREFIX_PATH=$(pwd)/../grpc/installed_packages -DCMAKE_C_FLAGS='-O3 -march=broadwell -mtune=broadwell -funroll-loops -mfma -mavx2 -ffast-math -mf16c -mbmi2 -pthread -fno-finite-math-only' -DCMAKE_CXX_FLAGS='-O3 -march=broadwell -mtune=broadwell -mfma -mavx2 -mf16c -mbmi2 -funroll-loops -ffast-math -isystem $(pwd)/../grpc/installed_packages/include' -DCMAKE_EXE_LINKER_FLAGS='-flto -L$(pwd)/../grpc/installed_packages/lib64 -L$(pwd)/../grpc/installed_packages/lib'" make grpc-server
 
 # 5. Verify the static binary was generated
 ls -lh grpc-server
