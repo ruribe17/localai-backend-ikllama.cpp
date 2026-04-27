@@ -48,13 +48,18 @@ El único target funcional y soportado es:
 
 ### Paso 1: Compilar el backend
 ```bash
-# Clonar o copiar este repo en tu entorno de desarrollo
-cd /path/to/your/local-repo/ik_llama-cpp
+# 1. Clona LocalAI primero (si aún no lo tienes)
+git clone https://github.com/mudler/LocalAI.git
+cd LocalAI
 
-# Compilar usando el único target soportado
+# 2. Clona ik_llama.cpp directamente en la carpeta esperada para el backend
+git clone https://github.com/ruribe17/localai-backend-ikllama.cpp.git backend/cpp/ik_llama-cpp
+
+# 3. Compila el backend
+cd backend/cpp/ik_llama-cpp
 make llama-cpp-grpc
 
-# Verificar que se generó el binario estático
+# 4. Verificar que se generó el binario estático
 ls -lh grpc-server
 # → Debe mostrar algo como: -rwxr-xr-x 1 root root 180M ...
 ```
